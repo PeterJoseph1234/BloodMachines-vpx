@@ -20439,7 +20439,7 @@ end Sub
 
 Sub pDMDGameOver
 	pDMDSetPage(9)
-	pDMDmode="attract"
+	pDMDmode="go"
 	pDMD_CurSequencePos=0
 	pDMD_Sequence.Interval = 500
 	pDMD_Sequence.Enabled=true
@@ -20483,12 +20483,31 @@ Sub pDMD_Sequence_Timer
 		Case 4 puPlayer.LabelSet pDMD,"AttractA","       "& FormatScore(Score(2)),1,"{'mt':2, 'shadowcolor':2949120, 'shadowstate':1,'xoffset':2, 'yoffset':6, 'bold':1, 'outline':2 }":puPlayer.LabelSet pDMD,"Player1","PLAYER 2",1,"{'mt':2, 'shadowcolor':7929917, 'shadowstate':1,'xoffset':2, 'yoffset':4, 'bold':1, 'outline':2 }"
 		Case 5 puPlayer.LabelSet pDMD,"AttractA","       "& FormatScore(Score(3)),1,"{'mt':2, 'shadowcolor':2949120, 'shadowstate':1,'xoffset':2, 'yoffset':6, 'bold':1, 'outline':2 }":puPlayer.LabelSet pDMD,"Player1","PLAYER 3",1,"{'mt':2, 'shadowcolor':7929917, 'shadowstate':1,'xoffset':2, 'yoffset':4, 'bold':1, 'outline':2 }"
 		Case 6 puPlayer.LabelSet pDMD,"AttractA","       "& FormatScore(Score(4)),1,"{'mt':2, 'shadowcolor':2949120, 'shadowstate':1,'xoffset':2, 'yoffset':6, 'bold':1, 'outline':2 }":puPlayer.LabelSet pDMD,"Player1","PLAYER 4",1,"{'mt':2, 'shadowcolor':7929917, 'shadowstate':1,'xoffset':2, 'yoffset':4, 'bold':1, 'outline':2 }"
-		Case 7 pDMDSetPage(0):pDMD_Sequence.Interval = 1
+		Case 7 puPlayer.LabelSet pDMD,"AttractA","       "& FormatScore(Score(4)),0,"{'mt':2, 'shadowcolor':2949120, 'shadowstate':1,'xoffset':2, 'yoffset':6, 'bold':1, 'outline':2 }":puPlayer.LabelSet pDMD,"Player1","PLAYER 4",0,"{'mt':2, 'shadowcolor':7929917, 'shadowstate':1,'xoffset':2, 'yoffset':4, 'bold':1, 'outline':2 }":pDMD_Sequence.Interval = 20
 		Case 8 PuPEvent(406):pDMD_Sequence.Interval = 3000
 		Case 9 pDMDSetPage(9):puPlayer.LabelSet pDMD,"HSNUMB",""& FormatScore(HighScore(0)),1,"{'mt':2,'shadowcolor':58880, 'shadowstate':2,'xoffset':1, 'yoffset':2, 'bold':1, 'outline':2 }":pDMDSetPage(9):puPlayer.LabelSet pDMD,"GRANDCHAMP","GRAND CHAMPION",1,"{'mt':2,'shadowcolor':58880, 'shadowstate':2,'xoffset':1, 'yoffset':2, 'bold':1, 'outline':2 }":pDMDSetPage(9):puPlayer.LabelSet pDMD,"HSINIT",""& HighScoreName(0),1,"{'mt':2,'shadowcolor':58880, 'shadowstate':2,'xoffset':1, 'yoffset':2, 'bold':1, 'outline':2 }"
 		Case 10 puPlayer.LabelSet pDMD,"HSNUMB",""& FormatScore(HighScore(1)),1,"{'mt':2,'shadowcolor':58880, 'shadowstate':2,'xoffset':1, 'yoffset':2, 'bold':1, 'outline':2 }":pDMDSetPage(9):puPlayer.LabelSet pDMD,"GRANDCHAMP","HIGH SCORE: 1",1,"{'mt':2,'shadowcolor':58880, 'shadowstate':2,'xoffset':1, 'yoffset':2, 'bold':1, 'outline':2 }":pDMDSetPage(9):puPlayer.LabelSet pDMD,"HSINIT",""& HighScoreName(1),1,"{'mt':2,'shadowcolor':58880, 'shadowstate':2,'xoffset':1, 'yoffset':2, 'bold':1, 'outline':2 }"
 		Case 11 puPlayer.LabelSet pDMD,"HSNUMB",""& FormatScore(HighScore(2)),1,"{'mt':2,'shadowcolor':58880, 'shadowstate':2,'xoffset':1, 'yoffset':2, 'bold':1, 'outline':2 }":pDMDSetPage(9):puPlayer.LabelSet pDMD,"GRANDCHAMP","HIGH SCORE: 2",1,"{'mt':2,'shadowcolor':58880, 'shadowstate':2,'xoffset':1, 'yoffset':2, 'bold':1, 'outline':2 }":pDMDSetPage(9):puPlayer.LabelSet pDMD,"HSINIT",""& HighScoreName(2),1,"{'mt':2,'shadowcolor':58880, 'shadowstate':2,'xoffset':1, 'yoffset':2, 'bold':1, 'outline':2 }"
 		Case 12 pDMDSetPage(0):pDMD_Sequence.Interval =1 
+
+		Case Else
+		pDMDSetPage(9)
+		pDMD_CurSequencePos=0
+		end Select
+	end if
+		 if pDMDmode="go" then
+		Select Case pDMD_CurSequencePos
+		Case 1 PuPEvent(405) :pDMD_Sequence.Interval = 500
+		Case 2 pDMDSetPage(9):puPlayer.LabelSet pDMD,"AttractA","       "& FormatScore(Score(1)),1,"{'mt':2, 'shadowcolor':2949120, 'shadowstate':1,'xoffset':2, 'yoffset':6, 'bold':1, 'outline':2 }":puPlayer.LabelSet pDMD,"Player1","PLAYER 1",1,"{'mt':2, 'shadowcolor':7929917, 'shadowstate':1,'xoffset':2, 'yoffset':4, 'bold':1, 'outline':2 }":pDMD_Sequence.Interval = 3000
+		Case 3 puPlayer.LabelSet pDMD,"AttractA","       "& FormatScore(Score(2)),1,"{'mt':2, 'shadowcolor':2949120, 'shadowstate':1,'xoffset':2, 'yoffset':6, 'bold':1, 'outline':2 }":puPlayer.LabelSet pDMD,"Player1","PLAYER 2",1,"{'mt':2, 'shadowcolor':7929917, 'shadowstate':1,'xoffset':2, 'yoffset':4, 'bold':1, 'outline':2 }"
+		Case 4 puPlayer.LabelSet pDMD,"AttractA","       "& FormatScore(Score(3)),1,"{'mt':2, 'shadowcolor':2949120, 'shadowstate':1,'xoffset':2, 'yoffset':6, 'bold':1, 'outline':2 }":puPlayer.LabelSet pDMD,"Player1","PLAYER 3",1,"{'mt':2, 'shadowcolor':7929917, 'shadowstate':1,'xoffset':2, 'yoffset':4, 'bold':1, 'outline':2 }"
+		Case 5 puPlayer.LabelSet pDMD,"AttractA","       "& FormatScore(Score(4)),1,"{'mt':2, 'shadowcolor':2949120, 'shadowstate':1,'xoffset':2, 'yoffset':6, 'bold':1, 'outline':2 }":puPlayer.LabelSet pDMD,"Player1","PLAYER 4",1,"{'mt':2, 'shadowcolor':7929917, 'shadowstate':1,'xoffset':2, 'yoffset':4, 'bold':1, 'outline':2 }"
+		Case 6 puPlayer.LabelSet pDMD,"AttractA","       "& FormatScore(Score(4)),0,"{'mt':2, 'shadowcolor':2949120, 'shadowstate':1,'xoffset':2, 'yoffset':6, 'bold':1, 'outline':2 }":puPlayer.LabelSet pDMD,"Player1","PLAYER 4",0,"{'mt':2, 'shadowcolor':7929917, 'shadowstate':1,'xoffset':2, 'yoffset':4, 'bold':1, 'outline':2 }":pDMD_Sequence.Interval = 20
+		Case 7 PuPEvent(406):pDMD_Sequence.Interval = 3000
+		Case 8 pDMDSetPage(9):puPlayer.LabelSet pDMD,"HSNUMB",""& FormatScore(HighScore(0)),1,"{'mt':2,'shadowcolor':58880, 'shadowstate':2,'xoffset':1, 'yoffset':2, 'bold':1, 'outline':2 }":pDMDSetPage(9):puPlayer.LabelSet pDMD,"GRANDCHAMP","GRAND CHAMPION",1,"{'mt':2,'shadowcolor':58880, 'shadowstate':2,'xoffset':1, 'yoffset':2, 'bold':1, 'outline':2 }":pDMDSetPage(9):puPlayer.LabelSet pDMD,"HSINIT",""& HighScoreName(0),1,"{'mt':2,'shadowcolor':58880, 'shadowstate':2,'xoffset':1, 'yoffset':2, 'bold':1, 'outline':2 }"
+		Case 9 puPlayer.LabelSet pDMD,"HSNUMB",""& FormatScore(HighScore(1)),1,"{'mt':2,'shadowcolor':58880, 'shadowstate':2,'xoffset':1, 'yoffset':2, 'bold':1, 'outline':2 }":pDMDSetPage(9):puPlayer.LabelSet pDMD,"GRANDCHAMP","HIGH SCORE: 1",1,"{'mt':2,'shadowcolor':58880, 'shadowstate':2,'xoffset':1, 'yoffset':2, 'bold':1, 'outline':2 }":pDMDSetPage(9):puPlayer.LabelSet pDMD,"HSINIT",""& HighScoreName(1),1,"{'mt':2,'shadowcolor':58880, 'shadowstate':2,'xoffset':1, 'yoffset':2, 'bold':1, 'outline':2 }"
+		Case 10 puPlayer.LabelSet pDMD,"HSNUMB",""& FormatScore(HighScore(2)),1,"{'mt':2,'shadowcolor':58880, 'shadowstate':2,'xoffset':1, 'yoffset':2, 'bold':1, 'outline':2 }":pDMDSetPage(9):puPlayer.LabelSet pDMD,"GRANDCHAMP","HIGH SCORE: 2",1,"{'mt':2,'shadowcolor':58880, 'shadowstate':2,'xoffset':1, 'yoffset':2, 'bold':1, 'outline':2 }":pDMDSetPage(9):puPlayer.LabelSet pDMD,"HSINIT",""& HighScoreName(2),1,"{'mt':2,'shadowcolor':58880, 'shadowstate':2,'xoffset':1, 'yoffset':2, 'bold':1, 'outline':2 }"
+		Case 11 pDMDSetPage(0):pDMD_Sequence.Interval =1 
 
 		Case Else
 		pDMDSetPage(9)
