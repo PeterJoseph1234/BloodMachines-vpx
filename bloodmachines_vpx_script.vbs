@@ -3920,6 +3920,8 @@ Sub Table1_KeyDown(ByVal Keycode)
 		If keycode = CenterTiltKey Then Nudge 0, 1:SoundNudgeCenter:CheckTilt
 		If keycode = MechanicalTilt Then SoundNudgeCenter:CheckTilt
 		If keycode = PlungerKey Then ShootGun true
+		If keycode = RightFlipperKey  Then SkiptoEndTotal
+		If keycode = LeftFlipperKey  Then SkiptoEndTotal
 		If NOT Tilted Then			
 
 			if StagedFlipperMod = 1 Then
@@ -17258,6 +17260,7 @@ Dim EobBonusCounter
 Dim TOTALEOBBONUS
 Dim TOTALEOBBONUSvisible
 dim CurrentMissionCount
+Dim SkipEnd
 Sub DMD_EOB_Bonus
 
 	EobBonusCounter = EobBonusCounter + 1
@@ -17413,7 +17416,8 @@ Sub DMD_EOB_Bonus
 							playsound "EFX_gun_load",1,0.07				
 							DMD_ShowText FormatScore( TOTALEOBBONUSvisible * 10 ),2,FontWhite3,22,False,40,3000
 						PuPlayer.LabelShowPage pDMD,9,1.5,""
-						puPlayer.LabelSet pDMD,"Multi", "10X",1,"{'mt':2, 'shadowcolor':2949120, 'shadowstate':2,'xoffset':2, 'yoffset':8, 'bold':1, 'outline':2 }"						
+						puPlayer.LabelSet pDMD,"Multi", "10X",1,"{'mt':2, 'shadowcolor':2949120, 'shadowstate':2,'xoffset':2, 'yoffset':8, 'bold':1, 'outline':2 }"	
+						SkipEnd = False	
 						End If
 			Case  830 : pDMDSetPage(pDMDBlank)
 			Case  840: Score(currentplayer) = Score(currentplayer) + ( TOTALEOBBONUS * BonusMultiplier(CurrentPlayer) )
@@ -21051,6 +21055,12 @@ Sub PlayerUpFull
 	End If
 End Sub
 
+Sub SkiptoEndTotal
+ If SkipEnd  = True Then
+  EobBonusCounter = 810
+  SkipEnd = False	
+End if
+End Sub
 
 'High Score
 
