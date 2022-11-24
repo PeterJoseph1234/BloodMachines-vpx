@@ -5202,13 +5202,13 @@ Sub VUK1_Hit
 				End Select
 			Else								'pup
 				Select Case MissionSelect
-					Case 1: KickDelay = 13000
-					Case 2: KickDelay = 12500
-					Case 3: KickDelay = 12500
-					Case 4: KickDelay = 12500
-					Case 5: KickDelay = 12500
-					Case 6: KickDelay = 12500
-					Case 7: KickDelay = 12500
+					Case 1: KickDelay = 6500
+					Case 2: KickDelay = 6500
+					Case 3: KickDelay = 6500
+					Case 4: KickDelay = 6500
+					Case 5: KickDelay = 6500
+					Case 6: KickDelay = 6500
+					Case 7: KickDelay = 6500
 				End Select
 			end if
 			Mission_Begin
