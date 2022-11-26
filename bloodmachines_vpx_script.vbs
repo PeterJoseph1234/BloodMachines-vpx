@@ -3889,11 +3889,11 @@ Sub Table1_KeyDown(ByVal Keycode)
 
 
 	if keycode = StartGameKey then soundStartButton
-	   If pDMDmode="attract" And Credits=0 Then
+	 If HasPuP = True & pDMDmode="attract" And Credits=0 Then
 		puPlayer.LabelShowPage pDMD,9,1,""
 		puPlayer.LabelSet pDMD, "Error1", "Error                                                                  Insert Coin",0,"{'mt':1, 'at':1,'fq':150, 'len':3000, 'fc':459262}"
 	  End if
-		If pDMDmode="go" And Credits=0 Then
+		If HasPuP = True & pDMDmode="go" And Credits=0 Then
 		puPlayer.LabelShowPage pDMD,9,1,""
 		puPlayer.LabelSet pDMD, "Error1", "Error                                                                  Insert Coin",0,"{'mt':1, 'at':1,'fq':150, 'len':3000, 'fc':459262}"
 
@@ -17813,8 +17813,6 @@ Dim Enterblinking
 Dim bEnterHighCounter
 Sub DMD_EnterHigh
 	PupDMDHSInput
-	pDMDSetPage(9):puPlayer.LabelSet pDMD, "HIGHSCORE1P", "ENTER NAME:", 1,""
-	pDMDSetPage(9):puPlayer.LabelSet pDMD,	"HSSCORE","" & FormatNumber(Score(CurrentPlayer),0),1,""
 	Dim Displaytext
 	Enterblinking = Enterblinking +1
 	If ( Enterblinking mod 50 ) >20 Then
@@ -21095,6 +21093,8 @@ End Sub
 
 Sub PupDMDHSInput
 	if Not HasPuP then exit Sub
+	pDMDSetPage(9):puPlayer.LabelSet pDMD, "HIGHSCORE1P", "ENTER NAME:", 1,""
+	pDMDSetPage(9):puPlayer.LabelSet pDMD,	"HSSCORE","" & FormatNumber(Score(CurrentPlayer),0),1,""
 	If ( Enterblinking mod 50 ) >20 Then
 		If Len(EnterName) = 0 Then pDMDSetPage(9):puPlayer.LabelSet pDMD, "HIGHSCORE2P","<" & mid("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 ",EnterNamePos,1) & ">", 1,"{'mt':2, 'shadowcolor':2949120, 'shadowstate':2,'xoffset':2, 'yoffset':8, 'bold':1, 'outline':2 }"
 		If Len(EnterName) = 1 Then pDMDSetPage(9):puPlayer.LabelSet pDMD, "HIGHSCORE2P",Entername & "<" & mid("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 ",EnterNamePos,1) & ">", 1,"{'mt':2, 'shadowcolor':2949120, 'shadowstate':2,'xoffset':2, 'yoffset':8, 'bold':1, 'outline':2 }"
